@@ -2,7 +2,7 @@
 #include <string>
 #include <Windows.h>
 
-std::string word_g{};
+std::string string_g{};
 std::string reverse_g{};
 std::string unreverse_g{};
 std::string push_g{};
@@ -11,11 +11,11 @@ std::string decrypt_g{};
 void reverse()
 {
     std::cout << "Uncrypted Word: ";
-    std::getline(std::cin, word_g);
+    std::getline(std::cin, string_g);
 
-    for (size_t i = word_g.length(); i > 0; i--)
+    for (size_t i = string_g.length(); i > 0; i--)
     {
-        reverse_g += word_g[i - 1];
+        reverse_g += string_g[i - 1];
     }
 }
 void encrypt()
@@ -45,7 +45,7 @@ void decrypt()
 
 void Clear()
 {
-    word_g.clear();
+    string_g.clear();
     push_g.clear();
     decrypt_g.clear();
     reverse_g.clear();
