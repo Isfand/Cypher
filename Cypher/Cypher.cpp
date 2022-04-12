@@ -2,52 +2,54 @@
 #include <string>
 #include <Windows.h>
 
-std::string word{};
-std::string reverse{};
-std::string unreverse{};
-std::string push{};
-std::string decrypt{};
+std::string word_g{};
+std::string reverse_g{};
+std::string unreverse_g{};
+std::string push_g{};
+std::string decrypt_g{};
 
-void Encrypt()
+void reverse()
 {
     std::cout << "Uncrypted Word: ";
-    std::getline(std::cin, word);
+    std::getline(std::cin, word_g);
 
-    for (size_t i = word.length(); i > 0; i--)
+    for (size_t i = word_g.length(); i > 0; i--)
     {
-        reverse += word[i - 1];
+        reverse_g += word_g[i - 1];
     }
-
-    for (char i : reverse)
+}
+void encrypt()
+{
+    for (char i : reverse_g)
     {
-        push += i + (365 - (reverse.length() % 100));
+        push_g += i + (365 - (reverse_g.length() % 100));
     }
     std::cout << "Encrypted Word: ";
-    std::cout << push << "\n";
+    std::cout << push_g << "\n";
 }
 
-void Decrypt()
+void decrypt()
 {
-    for (char j : push)
+    for (char j : push_g)
     {
-        decrypt += j - (365 - push.length());
+        decrypt_g += j - (365 - push_g.length());
     }
 
-    for (size_t i = decrypt.length(); i > 0; i--)
+    for (size_t i = decrypt_g.length(); i > 0; i--)
     {
-        unreverse += decrypt[i - 1];
+        unreverse_g += decrypt_g[i - 1];
     }
     std::cout << "Decrypted Word: ";
-    std::cout << unreverse << "\n\n";
+    std::cout << unreverse_g << "\n\n";
 }
 
 void Clear()
 {
-    word.clear();
-    push.clear();
-    decrypt.clear();
-    reverse.clear();
-    unreverse.clear();
+    word_g.clear();
+    push_g.clear();
+    decrypt_g.clear();
+    reverse_g.clear();
+    unreverse_g.clear();
 }
 
 int main()
@@ -55,8 +57,9 @@ int main()
 
     while (1)
     {
-        Encrypt();
-        Decrypt();
+        reverse();
+        encrypt();
+        decrypt();
         Clear();
         Sleep(1);
     }
